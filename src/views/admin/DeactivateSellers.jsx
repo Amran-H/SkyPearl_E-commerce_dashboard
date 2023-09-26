@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Pagination from '../Pagination';
-import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { FaEye } from 'react-icons/fa';
 
-const Sellers = () => {
+const DeactivateSellers = () => {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState('');
@@ -33,8 +33,7 @@ const Sellers = () => {
                                 <th scope='col' className='py-3 px-4'>Name</th>
                                 <th scope='col' className='py-3 px-4'>Email</th>
                                 <th scope='col' className='py-3 px-4'>Payment-status</th>
-                                <th scope='col' className='py-3 px-4'>Division</th>
-                                <th scope='col' className='py-3 px-4'>District</th>
+                                <th scope='col' className='py-3 px-4'>Status</th>
                                 <th scope='col' className='py-3 px-4'>Action</th>
                             </tr>
                         </thead>
@@ -51,18 +50,15 @@ const Sellers = () => {
                                         <span>amran.h.akash@gmail.com</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Pending</span>
+                                        <span>Active</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Chittagong</span>
-                                    </td>
-                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Feni</span>
+                                        <span>Deactivated</span>
                                     </td>
 
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
                                         <div className='flex justify-start items-center gap-4'>
-                                            <Link to='/admin/dashboard/seller/details/:sellerId' className='pb-3 '><button className='bg-green-500 px-[7px] py-[4px] rounded-md text-xs hover:shadow-lg hover:shadow-green-400'>View</button></Link>
+                                            <Link className=' hover:shadow-yellow-500/50 pb-3 '><FaEye size={20} color='blue' /></Link>
                                         </div>
                                     </td>
                                 </tr>)
@@ -85,4 +81,4 @@ const Sellers = () => {
     );
 };
 
-export default Sellers;
+export default DeactivateSellers;

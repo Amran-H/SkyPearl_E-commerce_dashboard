@@ -45,7 +45,7 @@ const Orders = () => {
                     {/* orders row */}
                     <div>
                         <div className='flex justify-between items-start border-b border-slate-400'>
-                            <div className='py-4 w-[25%] font-medium whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
+                            <div className='py-4 w-[25%]    whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
                             <div className='py-4 w-[13%]'>$750</div>
                             <div className='py-4 w-[18%]'>Pending</div>
                             <div className='py-4 w-[18%]'>Pending</div>
@@ -57,13 +57,13 @@ const Orders = () => {
                         {/* sub order */}
                         <div className={show ? 'block  bg-slate-200' : 'hidden '}>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                             </div>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
@@ -72,7 +72,7 @@ const Orders = () => {
 
 
                         <div className='flex justify-between items-start border-b border-slate-400'>
-                            <div className='py-4 w-[25%] font-medium whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
+                            <div className='py-4 w-[25%]    whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
                             <div className='py-4 w-[13%]'>$750</div>
                             <div className='py-4 w-[18%]'>Pending</div>
                             <div className='py-4 w-[18%]'>Pending</div>
@@ -84,13 +84,13 @@ const Orders = () => {
                         {/* sub order */}
                         <div className={show ? 'block  bg-slate-200' : 'hidden '}>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                             </div>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
@@ -99,7 +99,7 @@ const Orders = () => {
 
 
                         <div className='flex justify-between items-start border-b border-slate-400'>
-                            <div className='py-4 w-[25%] font-medium whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
+                            <div className='py-4 w-[25%]    whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
                             <div className='py-4 w-[13%]'>$750</div>
                             <div className='py-4 w-[18%]'>Pending</div>
                             <div className='py-4 w-[18%]'>Pending</div>
@@ -111,13 +111,13 @@ const Orders = () => {
                         {/* sub order */}
                         <div className={show ? 'block  bg-slate-200' : 'hidden '}>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                             </div>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
@@ -126,7 +126,7 @@ const Orders = () => {
 
 
                         <div className='flex justify-between items-start border-b border-slate-400'>
-                            <div className='py-4 w-[25%] font-medium whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
+                            <div className='py-4 w-[25%]    whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
                             <div className='py-4 w-[13%]'>$750</div>
                             <div className='py-4 w-[18%]'>Pending</div>
                             <div className='py-4 w-[18%]'>Pending</div>
@@ -138,13 +138,13 @@ const Orders = () => {
                         {/* sub order */}
                         <div className={show ? 'block  bg-slate-200' : 'hidden '}>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                             </div>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
@@ -153,7 +153,7 @@ const Orders = () => {
 
 
                         <div className='flex justify-between items-start border-b border-slate-400'>
-                            <div className='py-4 w-[25%] font-medium whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
+                            <div className='py-4 w-[25%]    whitespace-nowrap'>sdfjg8723yhoiaklmsf980</div>
                             <div className='py-4 w-[13%]'>$750</div>
                             <div className='py-4 w-[18%]'>Pending</div>
                             <div className='py-4 w-[18%]'>Pending</div>
@@ -165,13 +165,13 @@ const Orders = () => {
                         {/* sub order */}
                         <div className={show ? 'block  bg-slate-200' : 'hidden '}>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                             </div>
                             <div className='flex justify-start items-start border-b border-slate-400  '>
-                                <div className='py-4 w-[25%] font-medium whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
+                                <div className='py-4 w-[25%]    whitespace-nowrap pl-2'>sdfjg8723yhoiaklmsf980</div>
                                 <div className='py-4 w-[13%]'>$750</div>
                                 <div className='py-4 w-[18%]'>Pending</div>
                                 <div className='py-4 w-[18%]'>Pending</div>

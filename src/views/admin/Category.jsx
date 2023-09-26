@@ -14,7 +14,6 @@ const Category = () => {
 
     return (
         <div className='px-2 lg:px-7 pt-5'>
-
             <div className='flex lg:hidden justify-between items-center mb-5 p-4 rounded-md'>
                 <h1 className='font-semibold text-lg'>Categories</h1>
                 <button onClick={() => setShow(true)} className='bg-indigo-500 shadow-lg hover:shadow-indigo-500/50 px-4 py-2 cursor-pointer text-white rounded-sm text-sm'>Add</button>
