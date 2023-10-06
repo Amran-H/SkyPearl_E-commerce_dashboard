@@ -68,6 +68,7 @@ const Category = () => {
                             </table>
                         </div>
 
+                        {/* pagination */}
                         <div className='w-full mt-4 flex justify-end bottom-4 right-4'>
                             <Pagination
                                 pageNumber={currentPage}

@@ -84,14 +84,14 @@ export const allNav = [
         title: 'All Product',
         icon: <HiOutlineWallet />,
         role: 'seller',
-        path: '/seller/dashboard/all-product'
+        path: '/seller/dashboard/products'
     },
     {
         id: 12,
         title: 'Discount Product',
         icon: <AiFillDashboard />,
         role: 'seller',
-        path: '/seller/dashboard/discount-product'
+        path: '/seller/dashboard/discounted-products'
     },
     {
         id: 13,
@@ -120,6 +120,13 @@ export const allNav = [
         icon: <AiFillDashboard />,
         role: 'seller',
         path: '/seller/dashboard/chat-support'
+    },
+    {
+        id: 17,
+        title: 'Profile',
+        icon: <AiFillDashboard />,
+        role: 'seller',
+        path: '/seller/dashboard/profile'
     },
 
 ];

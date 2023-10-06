@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaList } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
 
-const ChatSeller = () => {
+const ChatWithCustomer = () => {
 
     const [show, setShow] = useState(false);
     const sellerId = 1;
@@ -14,7 +14,7 @@ const ChatSeller = () => {
                     <div className={`w-[240px] h-full absolute z-10 ${show ? '-left-[16px]' : '-left-[336px]'} md:left-0 md:relative transition-all`}>
                         <div className='w-full h-[calc(100vh-177px)] bg-[#bac8ec] rounded-md  md:bg-transparent overflow-y-auto'>
                             <div className='flex text-xl justify-between items-center p-4 md:p-0 md:px-3 md:pb-3'>
-                                <h2>Sellers</h2>
+                                <h2>Customers</h2>
                                 <span onClick={() => setShow(false)} className='block cursor-pointer md:hidden '><IoMdClose /></span>
                             </div>
 
@@ -90,6 +90,7 @@ const ChatSeller = () => {
 
                                         </div>
                                     </div>
+                                    <h2 className='text-lg font-semibold'>Amran Hossain</h2>
                                 </div>
                             }
                             <div onClick={() => setShow(true)} className='w-[35px] h-[35px] md:hidden flex justify-center items-center rounded-md bg-blue-500 shadow-lg hover:bg-blue-500/50 cursor-pointer'>
@@ -180,4 +181,4 @@ const ChatSeller = () => {
 };
 
 
-export default ChatSeller;
+export default ChatWithCustomer

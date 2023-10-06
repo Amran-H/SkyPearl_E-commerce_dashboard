@@ -46,7 +46,7 @@ const AdminLogin = () => {
             dispatch(messageClear())
             navigate('/')
         }
-    }, [dispatch, errorMessage, successMessage])
+    }, [dispatch, errorMessage, successMessage, navigate])
 
 
     return (
@@ -55,7 +55,7 @@ const AdminLogin = () => {
                 <div className='p-4'>
 
                     <h2 className='text-4xl mb-3 font-bold text-center'>SkyPearl</h2>
-                    <p className='text-sm mb-3 text-center font-mono font-semibold'>Greetings Admin</p>
+                    <p className='text-sm mb-3 text-center font-mono font-semibold'>Greetings Admin!</p>
 
                     {/* <div>
                         <div>
@@ -66,12 +66,12 @@ const AdminLogin = () => {
                     <form onSubmit={submit}>
                         {/* Email */}
                         <div className='flex flex-col w-full gap-1 mb-3'>
-                            <label htmlFor="email">Email</label>
+                            <label className='font-semibold' htmlFor="email">Email</label>
                             <input onChange={handleInput} value={state.email} className='px-3 py-2 outline-none border border-slate-500  focus:border-indigo-500 rounded-md overflow-hidden' type="email" name='email' placeholder='Your email' id='email' required />
                         </div>
                         {/* Password */}
                         <div className='flex flex-col w-full gap-1 mb-8'>
-                            <label htmlFor="password">Password</label>
+                            <label className='font-semibold' htmlFor="password">Password</label>
                             <input onChange={handleInput} value={state.password} className='px-3 py-2 outline-none border border-slate-500  focus:border-indigo-500 rounded-md overflow-hidden' type="password" name='password' placeholder='Password' id='password' required />
                         </div>
 
