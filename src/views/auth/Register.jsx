@@ -1,9 +1,17 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineGithub, AiOutlineGooglePlus, AiOutlineTwitter } from 'react-icons/ai';
 import { FaFacebookF } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
+import { PropagateLoader } from 'react-spinners';
+import { loaderStyle } from '../../utils/utils';
+import { messageClear, seller_register } from '../../store/Reducers/authReducer';
+import toast from 'react-hot-toast';
 
 const Register = () => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const { loader, successMessage, errorMessage } = useSelector(state => state.auth)
 
     const [state, setState] = useState({
         name: '',
@@ -18,8 +26,21 @@ const Register = () => {
     };
     const submit = (e) => {
         e.preventDefault()
-        console.log(state);
+        dispatch(seller_register(state))
     }
+
+    useEffect(() => {
+        if (successMessage) {
+            toast.success(successMessage)
+            dispatch(messageClear())
+            navigate('/')
+        }
+        if (errorMessage) {
+            toast.error(errorMessage)
+            dispatch(messageClear())
+        }
+    }, [successMessage, errorMessage, dispatch]);
+
 
     return (
         <div className='min-w-screen min-h-screen flex justify-center items-center '>
@@ -50,8 +71,14 @@ const Register = () => {
                             <label className='text-sm' htmlFor="checkbox">I agree to the privacy policy and terms</label>
                         </div>
 
-                        <button className='w-full bg-[#0095F6] rounded-[8px] hover:shadow-blue-500/50 hover:shadow-lg py-[7px]  font-semibold mb-3'>
-                            Register
+                        <button disabled={loader ? true : false} className='w-full bg-[#006fff] rounded-[8px] hover:shadow-blue-500/20 hover:shadow-lg py-[7px]  font-semibold mb-3'>
+                            {
+                                loader ? <PropagateLoader
+                                    color='#fff'
+                                    size={15}
+                                    cssOverride={loaderStyle}
+                                /> : "Register"
+                            }
                         </button>
 
                         <div className='flex items-center mb-3 gap-3 justify-center'>

@@ -9,13 +9,11 @@ const Payments = lazy(() => import('../../views/Payments'));
 const ChatWithCustomer = lazy(() => import('../../views/seller/ChatWithCustomer'));
 const ChatWithAdmin = lazy(() => import('../../views/seller/ChatWithAdmin'));
 const SellerProfile = lazy(() => import('../../views/seller/SellerProfile'));
+const EditProduct = lazy(() => import('../../views/seller/EditProduct'));
+const OrderDetails = lazy(() => import('../../views/seller/OrderDetails'));
 
 export const sellerRoutes = [
-    {
-        path: '/',
-        element: <Home></Home>,
-        ability: ['admin', 'seller']
-    },
+
     {
         path: '/seller/dashboard',
         element: <SellerDashboard />,
@@ -25,6 +23,12 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/add-product',
         element: <AddProduct />,
+        role: 'seller',
+        status: 'active'
+    },
+    {
+        path: '/seller/dashboard/edit-product/:product',
+        element: <EditProduct />,
         role: 'seller',
         status: 'active'
     },
@@ -43,6 +47,12 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/orders',
         element: <Orders />,
+        role: 'seller',
+        ability: ['active', 'inactive']
+    },
+    {
+        path: '/seller/dashboard/order/details/:orderId',
+        element: <OrderDetails />,
         role: 'seller',
         ability: ['active', 'inactive']
     },

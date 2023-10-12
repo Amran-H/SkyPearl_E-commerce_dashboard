@@ -1,9 +1,11 @@
-import { AiFillDashboard, AiOutlineShopping } from "react-icons/ai";
+import { AiFillDashboard, AiOutlineShopping, AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCategory, BiLoaderCircle } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
-import { BsCurrencyDollar, BsDatabaseAdd } from "react-icons/bs";
+import { BsChat, BsCurrencyDollar, BsDatabaseAdd } from "react-icons/bs";
 import { CiChat1 } from "react-icons/ci";
 import { HiOutlineWallet } from "react-icons/hi2";
+import { RiProductHuntLine } from "react-icons/ri";
+import { FaUser } from "react-icons/fa";
 
 export const allNav = [
     // admin dashboard
@@ -82,49 +84,49 @@ export const allNav = [
     {
         id: 11,
         title: 'All Product',
-        icon: <HiOutlineWallet />,
+        icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/products'
     },
     {
         id: 12,
-        title: 'Discount Product',
-        icon: <AiFillDashboard />,
+        title: 'Discounted Product',
+        icon: <RiProductHuntLine />,
         role: 'seller',
         path: '/seller/dashboard/discounted-products'
     },
     {
         id: 13,
         title: 'Orders',
-        icon: <AiFillDashboard />,
+        icon: <AiOutlineShoppingCart />,
         role: 'seller',
         path: '/seller/dashboard/orders'
     },
     {
         id: 14,
         title: 'Payments',
-        icon: <AiFillDashboard />,
+        icon: <BsCurrencyDollar />,
         role: 'seller',
         path: '/seller/dashboard/payments'
     },
     {
         id: 15,
         title: 'Chat wit Customer',
-        icon: <AiFillDashboard />,
+        icon: <BsChat />,
         role: 'seller',
         path: '/seller/dashboard/chat-customer'
     },
     {
         id: 16,
         title: 'Chat with Support',
-        icon: <AiFillDashboard />,
+        icon: <CiChat1 />,
         role: 'seller',
         path: '/seller/dashboard/chat-support'
     },
     {
         id: 17,
         title: 'Profile',
-        icon: <AiFillDashboard />,
+        icon: <FaUser />,
         role: 'seller',
         path: '/seller/dashboard/profile'
     },

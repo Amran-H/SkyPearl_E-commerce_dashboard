@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 const AdminLogin = () => {
 
     const navigate = useNavigate();
-
     const dispatch = useDispatch();
 
     const { loader, errorMessage, successMessage } = useSelector(state => state.auth);

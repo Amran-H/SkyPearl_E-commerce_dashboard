@@ -58,7 +58,7 @@ const Products = () => {
 
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
                                         <div className='flex justify-start items-center gap-4'>
-                                            <Link className='hover:shadow-lg hover:shadow-yellow-500/50 pb-3'><FaEdit size={20} color='blue' /></Link>
+                                            <Link to={`/seller/dashboard/edit-product/12`} className='hover:shadow-lg hover:shadow-yellow-500/50 pb-3'><FaEdit size={20} color='blue' /></Link>
                                             <Link className='hover:shadow-sm hover:shadow-green-500/50 pb-3'><FaEye size={24} color='green' /></Link>
                                             <button className='hover:shadow-lg hover:shadow-red-500/50 pb-3'><FaTrash size={20} color='red' /> </button>
                                         </div>
