@@ -1,18 +1,18 @@
-import { AiFillDashboard, AiOutlineShopping, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineDashboard, AiOutlineShopping, AiOutlineShoppingCart } from "react-icons/ai";
 import { BiCategory, BiLoaderCircle } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { BsChat, BsCurrencyDollar, BsDatabaseAdd } from "react-icons/bs";
 import { CiChat1 } from "react-icons/ci";
 import { HiOutlineWallet } from "react-icons/hi2";
 import { RiProductHuntLine } from "react-icons/ri";
-import { FaUser } from "react-icons/fa";
+import { FaRegUser, FaUser } from "react-icons/fa";
 
 export const allNav = [
     // admin dashboard
     {
         id: 1,
         title: 'Dashboard',
-        icon: <AiFillDashboard />,
+        icon: <AiOutlineDashboard />,
         role: 'admin',
         path: '/admin/dashboard'
     },
@@ -70,7 +70,7 @@ export const allNav = [
     {
         id: 9,
         title: 'Dashboard',
-        icon: <AiFillDashboard />,
+        icon: <AiOutlineDashboard />,
         role: 'seller',
         path: '/seller/dashboard'
     },
@@ -126,7 +126,7 @@ export const allNav = [
     {
         id: 17,
         title: 'Profile',
-        icon: <FaUser />,
+        icon: <FaRegUser />,
         role: 'seller',
         path: '/seller/dashboard/profile'
     },

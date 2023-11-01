@@ -1,16 +1,71 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Pagination from '../Pagination';
+import toast from 'react-hot-toast';
 import { BsImage } from 'react-icons/bs';
 import { GrClose } from 'react-icons/gr';
+import { PropagateLoader } from 'react-spinners';
+import { loaderStyle } from '../../utils/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { categoryAdd, get_category, messageClear } from '../../store/Reducers/categoryReducer';
+import Search from '../components/Search';
 
 const Category = () => {
+    const dispatch = useDispatch()
+    const { loader, successMessage, errorMessage, categories } = useSelector(state => state.category)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState('');
     const [perPage, setPerPage] = useState(5);
     const [show, setShow] = useState(false);
+    const [imageShow, setImageShow] = useState('');
+    const [state, setState] = useState({
+        name: '',
+        image: ''
+    });
+
+    const imageHandle = (e) => {
+        let files = e.target.files;
+        if (files.length > 0) {
+            setImageShow(URL.createObjectURL(files[0]));
+            setState({
+                ...state,
+                image: files[0]
+            })
+        }
+    }
+
+    const add_category = (e) => {
+        e.preventDefault()
+        dispatch(categoryAdd(state))
+    };
+
+    useEffect(() => {
+        if (successMessage) {
+            toast.success(successMessage)
+            dispatch(messageClear())
+            setState({
+                name: '',
+                image: ''
+            })
+            setImageShow('')
+        }
+        if (errorMessage) {
+            toast.error(errorMessage)
+            dispatch(messageClear())
+        }
+    }, [successMessage, errorMessage, dispatch]);
+
+    useEffect(() => {
+        const obj = {
+            perPage: parseInt(perPage),
+            page: parseInt(currentPage),
+            searchValue
+        }
+        dispatch(get_category(obj))
+    }, [searchValue, currentPage, perPage])
+
 
     return (
         <div className='px-2 lg:px-7 pt-5'>
@@ -26,14 +81,7 @@ const Category = () => {
                     <div className='w-full bg-[#f6f8fd] p-4 rounded-md'>
 
                         {/* heading */}
-                        <div className='flex justify-between items-center'>
-                            <select onChange={(e) => setPerPage(parseInt(e.target.value))} className='px-4 py-2 hover:bg-indigo-100 outline-none border border-slate-700 rounded-md bg-transparent'>
-                                <option value="5">5</option>
-                                <option value="15">15</option>
-                                <option value="25">25</option>
-                            </select>
-                            <input className='px-6 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" name='search' placeholder='search' />
-                        </div>
+                        <Search setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue} />
 
                         {/* table */}
                         <div className='relative overflow-x-auto'>
@@ -49,11 +97,11 @@ const Category = () => {
 
                                 <tbody>
                                     {
-                                        [1, 2, 3, 4, 5].map((d, i) => <tr key={i} className='border-b border-slate-400'>
-                                            <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{d}</td>
-                                            <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-sm ' src={`http://localhost:3000/images/category/${d}.jpg`} alt="" /></td>
+                                        categories.map((category, i) => <tr key={i} className='border-b border-slate-400'>
+                                            <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{i + 1}</td>
+                                            <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-sm ' src={category.image} alt="" /></td>
                                             <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                                <span>Sports</span>
+                                                <span>{category.name}</span>
                                             </td>
 
                                             <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
@@ -92,23 +140,37 @@ const Category = () => {
                                     <GrClose size={24} />
                                 </div>
                             </div>
-                            <form >
+
+                            {/* From */}
+                            <form onSubmit={add_category}>
                                 <div className='flex flex-col w-full gap-2 mb-3'>
                                     <label className='font-bold' htmlFor="name">Category name</label>
-                                    <input className='px-6 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text"
+
+                                    <input value={state.name} onChange={(e) => setState({ ...state, name: e.target.value })} className='px-6 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type='text'
                                         id='name'
-                                        name='category_name' placeholder='Category name' />
+                                        name='category_name' placeholder='Category name' required />
                                 </div>
                                 <div>
                                     <label className='font-bold flex flex-col justify-center items-center cursor-pointer border border-dashed border-black h-[238px] hover:border-indigo-500' htmlFor="image">
-                                        <span><BsImage /></span>
-                                        <span>Select image</span>
+                                        {
+                                            imageShow ? <img className='w-full h-full' src={imageShow} alt="" /> : <>
+                                                <span><BsImage /></span>
+                                                <span>Select image</span>
+                                            </>
+                                        }
                                     </label>
-                                    <input className='hidden' type="file" name='image' id='image' />
+
+                                    <input onChange={imageHandle} className='hidden' type="file" name='image' id='image' required />
                                 </div>
                                 <div>
-                                    <button className='bg-blue-500 w-full hover:shadow-blue-500/50 hover:shadow-lg rounded-md px-7 py-2 my-3'>
-                                        Add Category
+                                    <button disabled={loader ? true : false} className='mt-4 w-full bg-[#006fff] rounded-[8px] hover:shadow-blue-500/20 hover:shadow-lg py-[7px]  font-semibold mb-3'>
+                                        {
+                                            loader ? <PropagateLoader
+                                                color='#fff'
+                                                size={15}
+                                                cssOverride={loaderStyle}
+                                            /> : "Add Category"
+                                        }
                                     </button>
                                 </div>
                             </form>
