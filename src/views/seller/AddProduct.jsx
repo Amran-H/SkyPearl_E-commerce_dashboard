@@ -12,6 +12,7 @@ import toast from 'react-hot-toast';
 const AddProduct = () => {
     const dispatch = useDispatch()
     const { categories } = useSelector(state => state.category);
+    const { userInfo } = useSelector(state => state.auth);
     const { loader, successMessage, errorMessage } = useSelector(state => state.product);
 
     useEffect(() => {
@@ -103,9 +104,9 @@ const AddProduct = () => {
         formData.append('description', state.description)
         formData.append('price', state.price)
         formData.append('stock', state.stock)
-        formData.append('category', state.category)
+        formData.append('category', category)
         formData.append('discount', state.discount)
-        formData.append('shopName', "Sky styles")
+        formData.append('shopName', userInfo?.shopInfo?.shopName)
         formData.append('brand', state.brand)
         for (let i = 0; i < images.length; i++) {
             formData.append('images', images[i])

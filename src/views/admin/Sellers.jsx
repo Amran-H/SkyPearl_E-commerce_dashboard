@@ -1,14 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pagination from '../Pagination';
 import { FaEdit, FaEye, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { get_all_sellers } from '../../store/Reducers/sellerReducer';
 
 const Sellers = () => {
+    const dispatch = useDispatch()
+    const { sellers, totalSeller } = useSelector(state => state.seller)
 
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState('');
     const [perPage, setPerPage] = useState(5);
     const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        const obj = {
+            perPage: parseInt(perPage),
+            page: parseInt(currentPage),
+            searchValue
+        }
+        dispatch(get_all_sellers(obj))
+    }, [searchValue, currentPage, perPage])
 
     return (
         <div className='px-2 lg:px-7 pt-5'>
@@ -41,28 +54,28 @@ const Sellers = () => {
 
                         <tbody className='text-sm'>
                             {
-                                [1, 2, 3, 4, 5].map((d, i) => <tr key={i} className='border-b border-slate-400'>
-                                    <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{d}</td>
-                                    <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-sm ' src={`http://localhost:3000/images/seller.png`} alt="" /></td>
+                                sellers?.map((seller, i) => <tr key={i} className='border-b border-slate-400'>
+                                    <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{i + 1}</td>
+                                    <td scope='row' className='pt-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-full ' src={seller?.image} alt="" /></td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Amran Hossain</span>
+                                        <span>{seller.name}</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>amran.h.akash@gmail.com</span>
+                                        <span>{seller.email}</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Pending</span>
+                                        <span>{seller.payment}</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Chittagong</span>
+                                        <span>{seller?.shopInfo?.division}</span>
                                     </td>
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                        <span>Feni</span>
+                                        <span>{seller?.shopInfo?.district}</span>
                                     </td>
 
                                     <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
                                         <div className='flex justify-start items-center gap-4'>
-                                            <Link to='/admin/dashboard/seller/details/:sellerId' className='pb-3 '><button className='bg-green-500 px-[7px] py-[4px] rounded-md text-xs hover:shadow-lg hover:shadow-green-400'>View</button></Link>
+                                            <Link to={`/admin/dashboard/seller/details/${seller?._id}`} className='pb-3 '><button className='bg-green-500 px-[7px] py-[4px] rounded-md text-xs hover:shadow-lg hover:shadow-green-400'>View</button></Link>
                                         </div>
                                     </td>
                                 </tr>)
@@ -71,15 +84,18 @@ const Sellers = () => {
                     </table>
                 </div>
 
-                <div className='w-full mt-4 flex justify-end bottom-4 right-4'>
-                    <Pagination
-                        pageNumber={currentPage}
-                        setPageNumber={setCurrentPage}
-                        totalItem={50}
-                        perPage={perPage}
-                        showItem={3}
-                    />
-                </div>
+                {/* pagination */}
+                {
+                    totalSeller <= perPage ? "" : <div className='w-full mt-4 flex justify-end bottom-4 right-4'>
+                        <Pagination
+                            pageNumber={currentPage}
+                            setPageNumber={setCurrentPage}
+                            totalItem={50}
+                            perPage={perPage}
+                            showItem={3}
+                        />
+                    </div>
+                }
             </div>
         </div>
     );

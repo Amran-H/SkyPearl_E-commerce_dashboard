@@ -30,67 +30,67 @@ const Products = () => {
             <div className='w-full bg-[#f6f8fd] p-4 rounded-md mb-6'>
                 <Search setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue} />
 
-                {totalProduct > 0
-                    ?
-                    /* table */
-                    <div className='relative overflow-x-auto mt-5'>
-                        <table className='w-full text-sm  text-black text-center object-center'>
-                            <thead className='text-sm text-black uppercase border-b border-slate-700'>
-                                <tr>
-                                    <th scope='col' className='py-3 px-4'>No</th>
-                                    <th scope='col' className='py-3 px-4'>Image </th>
-                                    <th scope='col' className='py-3 px-4'>Name</th>
-                                    <th scope='col' className='py-3 px-4'>Category</th>
-                                    <th scope='col' className='py-3 px-4'>Brand</th>
-                                    <th scope='col' className='py-3 px-4'>Price</th>
-                                    <th scope='col' className='py-3 px-4'>Discount</th>
-                                    <th scope='col' className='py-3 px-4'>Stock</th>
-                                    <th scope='col' className='py-3 px-4'>Action</th>
-                                </tr>
-                            </thead>
+                {
+                    totalProduct <= 0 ? <span className='font-bold flex justify-center text-xl text-red-600 pb-3'>No products found</span> : ""
+                }
 
-                            <tbody>
-                                {
-                                    products.map((product, i) => <tr key={i} className='border-b border-slate-400'>
-                                        <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{i + 1}</td>
-                                        <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-sm ' src={product.images[0]} alt="" /></td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <span>{product?.name?.slice(0, 16)}...</span>
-                                        </td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <span>{product.category}</span>
-                                        </td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <span>{product.brand}</span>
-                                        </td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <span>${product.price}</span>
-                                        </td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            {
-                                                product.discount === 0
-                                                    ? <span>No discount</span>
-                                                    : <span>{product.discount}%</span>
-                                            }
-                                        </td>
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
-                                            <span>{product.stock}</span>
-                                        </td>
+                {/* table */}
+                <div className='relative overflow-x-auto mt-5'>
+                    <table className='w-full text-sm  text-black text-center object-center'>
+                        <thead className='text-sm text-black uppercase border-b border-slate-700'>
+                            <tr>
+                                <th scope='col' className='py-3 px-4'>No</th>
+                                <th scope='col' className='py-3 px-4'>Image </th>
+                                <th scope='col' className='py-3 px-4'>Name</th>
+                                <th scope='col' className='py-3 px-4'>Category</th>
+                                <th scope='col' className='py-3 px-4'>Brand</th>
+                                <th scope='col' className='py-3 px-4'>Price</th>
+                                <th scope='col' className='py-3 px-4'>Discount</th>
+                                <th scope='col' className='py-3 px-4'>Stock</th>
+                                <th scope='col' className='py-3 px-4'>Action</th>
+                            </tr>
+                        </thead>
 
-                                        <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
-                                            <div className='flex justify-start items-center gap-4'>
-                                                <Link to={`/seller/dashboard/edit-product/${product._id}`} className='hover:shadow-lg hover:shadow-yellow-500/50 pb-3'><FaEdit size={20} color='blue' /></Link>
-                                                <Link className='hover:shadow-sm hover:shadow-green-500/50 pb-3'><FaEye size={24} color='green' /></Link>
-                                                <button className='hover:shadow-lg hover:shadow-red-500/50 pb-3'><FaTrash size={20} color='red' /> </button>
-                                            </div>
-                                        </td>
-                                    </tr>)
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-                    :
-                    <div className='text-3xl font-bold flex justify-center items-center '>No products found</div>}
+                        <tbody>
+                            {
+                                products.map((product, i) => <tr key={i} className='border-b border-slate-400'>
+                                    <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap'>{i + 1}</td>
+                                    <td scope='row' className='py-3 px-4 font-medium  whitespace-nowrap text-center flex justify-center items-center'><img className='h-[45px] w-[45px] rounded-sm ' src={product.images[0]} alt="" /></td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        <span>{product?.name?.slice(0, 16)}...</span>
+                                    </td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        <span>{product.category}</span>
+                                    </td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        <span>{product.brand}</span>
+                                    </td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        <span>${product.price}</span>
+                                    </td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        {
+                                            product.discount === 0
+                                                ? <span>No discount</span>
+                                                : <span>{product.discount}%</span>
+                                        }
+                                    </td>
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap'>
+                                        <span>{product.stock}</span>
+                                    </td>
+
+                                    <td scope='row' className='py-3 px-4 font-medium whitespace-nowrap flex justify-center items-center'>
+                                        <div className='flex justify-start items-center gap-4'>
+                                            <Link to={`/seller/dashboard/edit-product/${product._id}`} className='hover:shadow-lg hover:shadow-yellow-500/50 pb-3'><FaEdit size={20} color='blue' /></Link>
+                                            <Link className='hover:shadow-sm hover:shadow-green-500/50 pb-3'><FaEye size={24} color='green' /></Link>
+                                            <button className='hover:shadow-lg hover:shadow-red-500/50 pb-3'><FaTrash size={20} color='red' /> </button>
+                                        </div>
+                                    </td>
+                                </tr>)
+                            }
+                        </tbody>
+                    </table>
+                </div>
 
                 {/* pagination */}
                 {

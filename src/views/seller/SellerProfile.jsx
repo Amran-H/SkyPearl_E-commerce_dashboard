@@ -1,12 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaEdit } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { RiImageAddFill } from 'react-icons/ri';
-import { FadeLoader } from 'react-spinners';
+import { FadeLoader, PropagateLoader } from 'react-spinners';
 import { useDispatch, useSelector } from 'react-redux';
-import { profile_image_upload } from '../../store/Reducers/authReducer';
+import { profile_image_upload, profile_info_add } from '../../store/Reducers/authReducer';
+import { loaderStyle } from '../../utils/utils';
 
 const SellerProfile = () => {
+
+    const [state, setState] = useState({
+        division: '',
+        district: '',
+        shopName: '',
+        subDistrict: ''
+    })
 
     const dispatch = useDispatch();
     const { userInfo, loader, successMessage } = useSelector(state => state.auth);
@@ -26,6 +34,16 @@ const SellerProfile = () => {
         }
     }, [successMessage])
 
+    const addShop = (e) => {
+        e.preventDefault();
+        dispatch(profile_info_add(state))
+    }
+    const inputHandle = (e) => {
+        setState({
+            ...state,
+            [e.target.name]: e.target.value
+        })
+    }
 
     return (
         <div className='px-2 lg:px-7 py-5'>
@@ -107,43 +125,50 @@ const SellerProfile = () => {
                                             <span className='absolute top-2 right-2 cursor-pointer '><FaEdit size={20} color='blue' /></span>
                                             <div className='flex gap-2'>
                                                 <span>Shop name: </span>
-                                                <span>Amran  </span>
+                                                <span>{userInfo?.shopInfo?.shopName}</span>
                                             </div>
                                             <div className='flex gap-2'>
                                                 <span>Division: </span>
-                                                <span>CTG</span>
+                                                <span>{userInfo?.shopInfo?.division}</span>
                                             </div>
                                             <div className='flex gap-2'>
                                                 <span>District: </span>
-                                                <span>Feni </span>
+                                                <span>{userInfo?.shopInfo?.district} </span>
                                             </div>
                                             <div className='flex gap-2'>
                                                 <span>Sub district: </span>
-                                                <span>Chhagalnaiya</span>
+                                                <span>{userInfo?.shopInfo?.subDistrict}</span>
                                             </div>
                                         </div>
                                     </div>
                                     :
-                                    <form action="">
+                                    <form onSubmit={addShop}>
 
                                         <div className='flex flex-col w-full gap-1 mb-3'>
                                             <label htmlFor="shop">Shop name</label>
-                                            <input className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Shop name' name='shopName' id='shop' />
+                                            <input value={state.shopName} onChange={inputHandle} className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Shop name' name='shopName' id='shop' />
                                         </div>
                                         <div className='flex flex-col w-full gap-1 mb-3'>
                                             <label htmlFor="division">Division</label>
-                                            <input className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Division name' name='division' id='division' />
+                                            <input value={state.division} onChange={inputHandle} className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Division name' name='division' id='division' />
                                         </div>
                                         <div className='flex flex-col w-full gap-1 mb-3'>
                                             <label htmlFor="district">District</label>
-                                            <input className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='District name' name='district' id='district' />
+                                            <input value={state.district} onChange={inputHandle} className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='District name' name='district' id='district' />
                                         </div>
                                         <div className='flex flex-col w-full gap-1 mb-3'>
                                             <label htmlFor="sub">Sub district</label>
-                                            <input className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Sub district' name='subDistrict' id='sub' />
+                                            <input value={state.subDistrict} onChange={inputHandle} className=' pl-3 py-2 outline-none border bg-transparent border-slate-400 rounded-md text-black focus:border-indigo-700' type="text" placeholder='Sub district' name='subDistrict' id='sub' />
                                         </div>
-                                        <button className='bg-blue-500 sm:w-auto w-full hover:shadow-blue-500/50 hover:shadow-lg rounded-md px-7 py-2 my-3'>
-                                            Add
+
+                                        <button disabled={loader ? true : false} className='mt-4 w-[150px] bg-[#006fff] rounded-[8px] hover:shadow-blue-500/20 hover:shadow-lg py-[7px]  font-semibold mb-3'>
+                                            {
+                                                loader ? <PropagateLoader
+                                                    color='#fff'
+                                                    size={15}
+                                                    cssOverride={loaderStyle}
+                                                /> : "Add Shop"
+                                            }
                                         </button>
                                     </form>
 
